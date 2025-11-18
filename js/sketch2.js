@@ -6,6 +6,8 @@ let papyrus;
 let nb_anneaux = 0;
 let taille_max = 0;
 let time = 0;
+let maxwait1 = 200;
+let maxwait2 = 50;
 let wait1 = 200;
 let wait2 = 50;
 
@@ -89,7 +91,7 @@ function draw() {
     }
 
     if (w >= nb_anneaux*10) {
-      wait2 = 50;
+      wait2 = maxwait2;
       ovales = false;
       strokeWeight(1);
     }
@@ -119,7 +121,7 @@ function draw() {
     }
 
     if (taille_max <= 0) {
-      wait1 = 200;
+      wait1 = maxwait1;
       en_creation = false;
     }
   }
@@ -131,5 +133,13 @@ function keyPressed(){
     console.log(key)
     if (key==' '){
         background(0);
+    }
+    if (key=='ArrowUp'){
+        maxwait1-=30;
+        maxwait2-=15;
+    }
+    if (key=='ArrowDown'){
+        maxwait1+=30;
+        maxwait2+=15;
     }
 }
